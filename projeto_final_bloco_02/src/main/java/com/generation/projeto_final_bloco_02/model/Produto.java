@@ -1,5 +1,6 @@
 package com.generation.projeto_final_bloco_02.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -12,6 +13,38 @@ public class Produto {
 
     @NotBlank
     private String nome;
+
+    private Long valor;
+
+    private Long qtd_estoque;
+
+    @ManyToOne
+    @JsonIgnoreProperties("categoria")
+    private Categoria categoria;
+
+    public Long getValor() {
+        return valor;
+    }
+
+    public void setValor(Long valor) {
+        this.valor = valor;
+    }
+
+    public Long getQtd_estoque() {
+        return qtd_estoque;
+    }
+
+    public void setQtd_estoque(Long qtd_estoque) {
+        this.qtd_estoque = qtd_estoque;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 
     public long getId() {
         return id;
