@@ -14,19 +14,29 @@ public class Produto {
     @NotBlank
     private String nome;
 
-    private Long valor;
+    private Double valor;
 
     private Long qtd_estoque;
+
+    private Double desconto;
+
+    public Double getDesconto() {
+        return desconto;
+    }
+
+    public void setDesconto(Double desconto) {
+        this.desconto = desconto;
+    }
 
     @ManyToOne
     @JsonIgnoreProperties("categoria")
     private Categoria categoria;
 
-    public Long getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(Long valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 

@@ -18,6 +18,8 @@ public class Categoria {
 
     private String descricao;
 
+    private Double descontoPadrao;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria", cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties("categoria")
     private List<Produto> produto;
@@ -31,11 +33,11 @@ public class Categoria {
         return this;
     }
 
-    public @NotBlank String getNome() {
+    public String getNome() {
         return nome;
     }
 
-    public Categoria setNome(@NotBlank String nome) {
+    public Categoria setNome(String nome) {
         this.nome = nome;
         return this;
     }
@@ -47,5 +49,13 @@ public class Categoria {
     public Categoria setDescricao(String descricao) {
         this.descricao = descricao;
         return this;
+    }
+
+    public Double getDescontoPadrao() {
+        return descontoPadrao;
+    }
+
+    public void setDescontoPadrao(Double descontoPadrao) {
+        this.descontoPadrao = descontoPadrao;
     }
 }

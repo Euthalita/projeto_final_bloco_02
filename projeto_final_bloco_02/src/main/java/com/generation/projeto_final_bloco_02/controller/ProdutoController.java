@@ -4,6 +4,7 @@ package com.generation.projeto_final_bloco_02.controller;
 import com.generation.projeto_final_bloco_02.model.Produto;
 import com.generation.projeto_final_bloco_02.repository.CategoriaRepository;
 import com.generation.projeto_final_bloco_02.repository.ProdutoRepository;
+import com.generation.projeto_final_bloco_02.service.ProdutoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,9 @@ public class ProdutoController {
 
     @Autowired
     private CategoriaRepository categoriaRepository;
+
+    @Autowired
+    private ProdutoService produtoService;
 
     @GetMapping
     public ResponseEntity<List<Produto>> getAll(){
@@ -77,4 +81,9 @@ public class ProdutoController {
         produtoRepository.deleteById(id);
     }
 
+    @GetMapping("/{id}/desconto")
+    public Double calcularDesconto(@PathVariable Long id) {
+        Produto produto = produtoService.obterProduto(id);
+        return produtoService.calcularDesconto(produto);
+    }
 }
